@@ -59,8 +59,7 @@ async function checkTestAvailability(mock) {
   if (available) {
     // The file is found, enable the card and buttons
     if (card) card.classList.remove('not-available');
-    badge.textContent = "Available";
-    badge.className = "badge-status available";
+    badge.style.display = "none";
     btn.textContent = "Go to Mock Test";
     btn.className = "btn btn-primary";
     btn.href = mock.path;
@@ -68,6 +67,7 @@ async function checkTestAvailability(mock) {
   } else {
     // File not found (e.g. 404), style as "Not Available"
     if (card) card.classList.add('not-available');
+    badge.style.display = "inline-block";
     setNotAvailableState(btn, badge);
   }
 }
