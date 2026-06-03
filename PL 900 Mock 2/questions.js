@@ -1,0 +1,634 @@
+window.questionsDB = [
+  {
+    "id": "Q1",
+    "question": "What is the primary purpose of Microsoft Power Platform?",
+    "options": {
+      "A": "Software development using full code",
+      "B": "Managing hardware infrastructure",
+      "C": "Creating business solutions using low-code tools",
+      "D": "Operating system development"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power Platform enables users to create business solutions using low-code tools such as Power Apps, Power Automate, and Power BI."
+  },
+  {
+    "id": "Q2",
+    "question": "Which Power Platform component is used to analyze data and create reports?",
+    "options": {
+      "A": "Power Apps",
+      "B": "Power Automate",
+      "C": "Power BI",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power BI is used for data visualization, reporting, and analytics."
+  },
+  {
+    "id": "Q3",
+    "question": "Which components are part of Microsoft Power Platform? (Select all that apply)",
+    "options": {
+      "A": "Power Apps",
+      "B": "Power BI",
+      "C": "Power Automate",
+      "D": "Azure DevOps"
+    },
+    "correctAnswer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "Power Apps, Power BI, and Power Automate are core Power Platform components. Azure DevOps is a separate developer services suite."
+  },
+  {
+    "id": "Q4",
+    "question": "Which Power Apps type provides full control over the user interface layout?",
+    "options": {
+      "A": "Model-driven app",
+      "B": "Canvas app",
+      "C": "Power Pages",
+      "D": "Cards for Power Apps"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Canvas apps provide full user interface control, allowing a drag-and-drop 'canvas' design that is pixel-perfect."
+  },
+  {
+    "id": "Q5",
+    "question": "Which Power Apps type requires Dataverse?",
+    "options": {
+      "A": "Canvas app",
+      "B": "SharePoint app",
+      "C": "Model-driven app",
+      "D": "Excel-based app"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Model-driven apps are built directly on top of Microsoft Dataverse and require it as their data source."
+  },
+  {
+    "id": "Q6",
+    "question": "Which language is used to add logic in Power Apps?",
+    "options": {
+      "A": "JavaScript",
+      "B": "Python",
+      "C": "Power Fx",
+      "D": "DAX"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power Fx is the low-code formula language used to express logic and formulas across Microsoft Power Apps."
+  },
+  {
+    "id": "Q7",
+    "question": "A company wants to build a mobile app for employees to submit leave requests. Which component should be used?",
+    "options": {
+      "A": "Power BI",
+      "B": "Power Automate",
+      "C": "Power Apps",
+      "D": "AI Builder"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power Apps is used to build user-facing mobile and web business applications. While Power Automate is often used to run the leave approval workflow in the background, the actual mobile app interface is built with Power Apps."
+  },
+  {
+    "id": "Q8",
+    "question": "Sharing a Power App with a user automatically gives access to the underlying data source.",
+    "options": {
+      "A": "True",
+      "B": "False"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Sharing the app interface does not grant permissions to the underlying data source (such as SharePoint lists, SQL Server databases, or Dataverse tables). Users must be assigned appropriate permissions to the data source separately."
+  },
+  {
+    "id": "Q9",
+    "question": "Which data source is the preferred and native platform for Power Apps?",
+    "options": {
+      "A": "Excel",
+      "B": "SharePoint",
+      "C": "SQL Server",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "D"
+    ],
+    "explanation": "Dataverse is the native, cloud-based data platform for the Microsoft Power Platform, providing rich security, metadata, and relationship capabilities."
+  },
+  {
+    "id": "Q10",
+    "question": "What is a flow in Power Automate?",
+    "options": {
+      "A": "A report",
+      "B": "An automated workflow",
+      "C": "A database",
+      "D": "A mobile app"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "A flow in Power Automate represents an automated workflow that runs task logic in response to a specific trigger, schedule, or manual button click."
+  },
+  {
+    "id": "Q11",
+    "question": "Which component defines when a Power Automate flow starts?",
+    "options": {
+      "A": "Action",
+      "B": "Connector",
+      "C": "Trigger",
+      "D": "Condition"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Triggers define when a flow starts."
+  },
+  {
+    "id": "Q12",
+    "question": "Which flow runs automatically when an event occurs?",
+    "options": {
+      "A": "Instant flow",
+      "B": "Scheduled flow",
+      "C": "Automated flow",
+      "D": "Desktop flow"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Automated flows start when an event occurs."
+  },
+  {
+    "id": "Q13",
+    "question": "Which flow is manually triggered by a user?",
+    "options": {
+      "A": "Automated",
+      "B": "Instant",
+      "C": "Scheduled",
+      "D": "Approval"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Instant flows are manually triggered."
+  },
+  {
+    "id": "Q14",
+    "question": "Which flow runs at a fixed time every day?",
+    "options": {
+      "A": "Automated",
+      "B": "Instant",
+      "C": "Scheduled",
+      "D": "Desktop"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Scheduled flows run at defined times."
+  },
+  {
+    "id": "Q15",
+    "question": "What is Microsoft Dataverse?",
+    "options": {
+      "A": "Reporting tool",
+      "B": "File storage",
+      "C": "Cloud data platform",
+      "D": "Workflow engine"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Dataverse is a secure cloud-based data platform."
+  },
+  {
+    "id": "Q16",
+    "question": "Which objects are used to store data in Dataverse? (Select all that apply)",
+    "options": {
+      "A": "Tables",
+      "B": "Rows",
+      "C": "Columns",
+      "D": "Worksheets"
+    },
+    "correctAnswer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "Dataverse stores data in tables, rows, and columns."
+  },
+  {
+    "id": "Q17",
+    "question": "Which feature controls access to Dataverse data?",
+    "options": {
+      "A": "Dashboards",
+      "B": "Security roles",
+      "C": "Templates",
+      "D": "Power Fx"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Security roles define who can access Dataverse data."
+  },
+  {
+    "id": "Q18",
+    "question": "Dataverse is best suited for which scenario?",
+    "options": {
+      "A": "Personal notes",
+      "B": "Secure multi-user apps",
+      "C": "Temporary files",
+      "D": "Image editing"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Dataverse is ideal for secure multi-user business applications."
+  },
+  {
+    "id": "Q19",
+    "question": "Dataverse requires which license type?",
+    "options": {
+      "A": "Free",
+      "B": "Trial only",
+      "C": "Premium",
+      "D": "None"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Dataverse is a premium data source."
+  },
+  {
+    "id": "Q20",
+    "question": "Which tool is used to create Power BI reports?",
+    "options": {
+      "A": "Power BI Service",
+      "B": "Power BI Desktop",
+      "C": "Power Apps",
+      "D": "Excel"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Reports are created in Power BI Desktop."
+  },
+  {
+    "id": "Q21",
+    "question": "Where are Power BI dashboards created?",
+    "options": {
+      "A": "Desktop",
+      "B": "Service",
+      "C": "Excel",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Dashboards are created in Power BI Service."
+  },
+  {
+    "id": "Q22",
+    "question": "Which license is required to share Power BI reports?",
+    "options": {
+      "A": "Free",
+      "B": "Pro",
+      "C": "Premium only",
+      "D": "Trial"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Power BI Pro is required for sharing."
+  },
+  {
+    "id": "Q23",
+    "question": "What is AI Builder used for?",
+    "options": {
+      "A": "Coding AI models",
+      "B": "Database design",
+      "C": "Adding AI without code",
+      "D": "App deployment"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "AI Builder adds AI capabilities without coding."
+  },
+  {
+    "id": "Q24",
+    "question": "Which AI Builder model extracts data from invoices?",
+    "options": {
+      "A": "Prediction",
+      "B": "Object detection",
+      "C": "Form processing",
+      "D": "OCR"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Form processing extracts structured data from documents."
+  },
+  {
+    "id": "Q25",
+    "question": "AI Builder works with which services? (Select all that apply)",
+    "options": {
+      "A": "Power Apps",
+      "B": "Power Automate",
+      "C": "Visual Studio",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "AI Builder integrates with Power Apps, Power Automate, and Dataverse."
+  },
+  {
+    "id": "Q26",
+    "question": "What is the purpose of DLP policies?",
+    "options": {
+      "A": "Improve performance",
+      "B": "Control data sharing",
+      "C": "Create reports",
+      "D": "Design UI"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "DLP policies prevent data leakage between connectors."
+  },
+  {
+    "id": "Q27",
+    "question": "Which connector groups exist in DLP? (Select all that apply)",
+    "options": {
+      "A": "Business",
+      "B": "Non-business",
+      "C": "Blocked",
+      "D": "Premium"
+    },
+    "correctAnswer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "DLP uses Business, Non-business, and Blocked groups."
+  },
+  {
+    "id": "Q28",
+    "question": "Which rule is enforced by DLP policies?",
+    "options": {
+      "A": "All connectors can mix",
+      "B": "Business and non-business cannot mix",
+      "C": "Only blocked connectors work",
+      "D": "No restrictions"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Business and non-business connectors cannot be used together."
+  },
+  {
+    "id": "Q29",
+    "question": "DLP policies apply to which services?",
+    "options": {
+      "A": "Power Apps",
+      "B": "Power Automate",
+      "C": "Power BI Desktop",
+      "D": "Excel"
+    },
+    "correctAnswer": [
+      "A",
+      "B"
+    ],
+    "explanation": "DLP applies to Power Apps and Power Automate."
+  },
+  {
+    "id": "Q30",
+    "question": "Which combination is correct for app + data + automation?",
+    "options": {
+      "A": "Power BI + Excel",
+      "B": "Power Apps + Dataverse + Power Automate",
+      "C": "Power Apps + Power BI",
+      "D": "AI Builder only"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Power Apps builds apps, Dataverse stores data, Power Automate automates processes."
+  },
+  {
+    "id": "Q31",
+    "question": "Which component is best for approval workflows?",
+    "options": {
+      "A": "Power BI",
+      "B": "Power Apps",
+      "C": "Power Automate",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power Automate is used for approvals."
+  },
+  {
+    "id": "Q32",
+    "question": "Which feature separates development and production?",
+    "options": {
+      "A": "Dashboards",
+      "B": "Environments",
+      "C": "DLP",
+      "D": "Connectors"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Environments separate resources and data."
+  },
+  {
+    "id": "Q33",
+    "question": "Power BI dashboards are:",
+    "options": {
+      "A": "Multi-page",
+      "B": "Single-page",
+      "C": "Editable in Desktop",
+      "D": "Created in Excel"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Dashboards are single-page and created in the service."
+  },
+  {
+    "id": "Q34",
+    "question": "Model-driven apps can be created without Dataverse.",
+    "options": {
+      "A": "True",
+      "B": "False"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Model-driven apps always require Dataverse."
+  },
+  {
+    "id": "Q35",
+    "question": "AI Builder requires machine learning expertise.",
+    "options": {
+      "A": "True",
+      "B": "False"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "AI Builder is low-code and does not require ML skills."
+  },
+  {
+    "id": "Q36",
+    "question": "Which tool prevents company data from going to personal services?",
+    "options": {
+      "A": "Security roles",
+      "B": "AI Builder",
+      "C": "DLP policies",
+      "D": "Power Fx"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "DLP policies prevent data leakage."
+  },
+  {
+    "id": "Q37",
+    "question": "Power BI Free users can share reports.",
+    "options": {
+      "A": "True",
+      "B": "False"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Sharing requires Power BI Pro."
+  },
+  {
+    "id": "Q38",
+    "question": "Which flow uses triggers and actions?",
+    "options": {
+      "A": "Power Apps",
+      "B": "Power BI",
+      "C": "Power Automate",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power Automate flows use triggers and actions."
+  },
+  {
+    "id": "Q39",
+    "question": "Which component stores relational business data?",
+    "options": {
+      "A": "Excel",
+      "B": "SharePoint",
+      "C": "Dataverse",
+      "D": "Power BI"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Dataverse stores relational business data."
+  },
+  {
+    "id": "Q40",
+    "question": "Which Power Platform component adds intelligence?",
+    "options": {
+      "A": "Power BI",
+      "B": "Power Apps",
+      "C": "AI Builder",
+      "D": "Dataverse"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "AI Builder adds AI capabilities."
+  },
+  {
+    "id": "Q41",
+    "question": "Which component visualizes KPIs?",
+    "options": {
+      "A": "Power Automate",
+      "B": "Power Apps",
+      "C": "Power BI",
+      "D": "AI Builder"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "Power BI visualizes KPIs."
+  },
+  {
+    "id": "Q42",
+    "question": "What starts a Power Automate flow?",
+    "options": {
+      "A": "Action",
+      "B": "Trigger",
+      "C": "Condition",
+      "D": "Connector"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Triggers start flows."
+  },
+  {
+    "id": "Q43",
+    "question": "Which Power Apps feature enforces data rules without code?",
+    "options": {
+      "A": "Power Fx",
+      "B": "Business rules",
+      "C": "DLP",
+      "D": "Connectors"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Business rules enforce logic without code."
+  },
+  {
+    "id": "Q44",
+    "question": "Which tool is best for data entry apps?",
+    "options": {
+      "A": "Power BI",
+      "B": "Power Apps",
+      "C": "Power Automate",
+      "D": "AI Builder"
+    },
+    "correctAnswer": [
+      "B"
+    ],
+    "explanation": "Power Apps is best for data entry."
+  },
+  {
+    "id": "Q45",
+    "question": "PL-900 is which level of certification?",
+    "options": {
+      "A": "Advanced",
+      "B": "Expert",
+      "C": "Fundamentals",
+      "D": "Developer"
+    },
+    "correctAnswer": [
+      "C"
+    ],
+    "explanation": "PL-900 is a fundamentals-level certification."
+  }
+]
+;

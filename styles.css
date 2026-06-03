@@ -1,0 +1,1003 @@
+/* ==========================================================================
+   PL-900 Course Landing Page Design System
+   Reuses variables, theme, and typography from Mock Test 2
+   ========================================================================== */
+
+:root {
+  /* Color Palette - HSL Tailored Colors */
+  --primary: hsl(252, 78%, 60%);        /* Modern Royal Purple */
+  --primary-hover: hsl(252, 78%, 52%);
+  --primary-light: hsl(252, 78%, 97%);
+  
+  --secondary: hsl(199, 89%, 48%);      /* Electric Sky Blue */
+  --secondary-hover: hsl(199, 89%, 40%);
+  --secondary-light: hsl(199, 89%, 97%);
+
+  --accent: hsl(36, 100%, 50%);         /* Warning Gold */
+  --accent-light: hsl(36, 100%, 96%);
+
+  --success: hsl(142, 76%, 36%);        /* Emerald Green */
+  --success-light: hsl(142, 76%, 96%);
+
+  --danger: hsl(354, 76%, 48%);         /* Crimson Red */
+  --danger-light: hsl(354, 76%, 96%);
+
+  --neutral-bg: hsl(210, 40%, 98%);     /* Soft Cool Grey for Page Background */
+  --neutral-card: hsl(0, 0%, 100%);     /* Pure White Card Background */
+  --neutral-border: hsl(210, 14%, 91%); /* Thin grey dividers */
+  
+  /* Text Colors */
+  --text-main: hsl(210, 24%, 16%);      /* Deep Slate for Primary Text */
+  --text-muted: hsl(210, 12%, 46%);     /* Medium Slate for Secondary/Muted Text */
+  --text-light: hsl(210, 8%, 60%);
+
+  /* Shadow Systems */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-premium: 0 20px 25px -5px rgba(127, 90, 240, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+
+  /* Borders and Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-round: 50%;
+  
+  /* Animations */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   General Resets & Base Styles
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--neutral-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Wrapper Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Header / Navigation Styles
+   ========================================================================== */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding: 0 24px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--neutral-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+/* ==========================================================================
+   Main Content Area & Section Layouts
+   ========================================================================== */
+.app-main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+/* Typography & Headings */
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.6px;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* Content Box/Card wrapper */
+.view-card {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--neutral-border);
+  padding: 40px;
+  animation: fadeIn var(--transition-normal) forwards;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Hero Section (Screenshot 1)
+   ========================================================================== */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 38px;
+  font-weight: 850;
+  line-height: 1.2;
+  color: var(--text-main);
+  letter-spacing: -1.2px;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.2px;
+}
+
+.hero-description {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  max-width: 580px;
+}
+
+/* Light Green Alert Banners (Slide 1 & Slide 7) */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--success-light);
+  border: 1px solid hsl(142, 76%, 85%);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  color: hsl(142, 76%, 22%);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.alert-banner svg {
+  flex-shrink: 0;
+  color: var(--success);
+}
+
+.hero-badge-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-card {
+  background: linear-gradient(135deg, hsl(222, 19%, 15%) 0%, hsl(222, 19%, 20%) 100%);
+  border: 1px solid hsl(222, 19%, 25%);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  color: var(--neutral-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(127, 90, 240, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.badge-card-icon {
+  margin-bottom: 20px;
+}
+
+.badge-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.badge-card-name {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.badge-card-code {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 20px;
+  border: 1px solid hsl(252, 78%, 90%);
+}
+
+.badge-card-status {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Topics Covered & Domain Grid (Screenshot 2 & 3)
+   ========================================================================== */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.topic-card {
+  background-color: var(--neutral-bg);
+  border: 1px solid var(--neutral-border);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.topic-card:nth-child(1) { border-left: 4px solid var(--secondary); }
+.topic-card:nth-child(2) { border-left: 4px solid var(--primary); }
+.topic-card:nth-child(3) { border-left: 4px solid var(--accent); }
+.topic-card:nth-child(4) { border-left: 4px solid var(--success); }
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: hsl(252, 78%, 88%);
+}
+
+.topic-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.topic-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.topic-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topic-card li {
+  font-size: 14px;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 20px;
+}
+
+.topic-card li::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-round);
+  background-color: var(--primary);
+}
+
+/* Domain Checklist Section (Screenshot 3) */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.domain-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.domain-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  flex-shrink: 0;
+  border: 1px solid hsl(252, 78%, 92%);
+}
+
+.domain-info h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.domain-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Target Audience (Screenshot 4)
+   ========================================================================== */
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience-card {
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--neutral-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.audience-card:nth-child(1) { border-top: 4px solid var(--secondary); }
+.audience-card:nth-child(2) { border-top: 4px solid var(--primary); }
+.audience-card:nth-child(3) { border-top: 4px solid var(--accent); }
+.audience-card:nth-child(4) { border-top: 4px solid var(--success); }
+
+.audience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.audience-card-header {
+  background-color: hsl(210, 20%, 93%);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--neutral-border);
+  color: var(--text-muted);
+}
+
+.audience-card-header svg {
+  color: var(--text-muted);
+}
+
+.audience-card-body {
+  padding: 24px;
+}
+
+.audience-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.audience-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.audience-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.audience-card li {
+  font-size: 14px;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 20px;
+}
+
+.audience-card li::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-round);
+  background-color: var(--primary);
+}
+
+/* ==========================================================================
+   Exam Guide (Screenshots 5, 6, 7)
+   ========================================================================== */
+.passing-req-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.passing-card-dark {
+  background-color: hsl(222, 19%, 18%);
+  color: var(--neutral-card);
+  padding: 36px 28px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passing-card-dark::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.passing-card-dark h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.passing-card-dark .score-value {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--neutral-card);
+}
+
+.passing-card-dark .score-label {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 16px;
+}
+
+.passing-req-desc h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.passing-req-desc .pct-value {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.passing-req-desc p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Exam Structure (Screenshot 7) */
+.structure-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.stat-item .stat-num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.stat-item .stat-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.stat-item .stat-desc {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.formats-section {
+  margin-top: 32px;
+}
+
+.formats-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.format-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.format-item svg {
+  color: var(--text-main);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.format-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.format-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Outline Table (Screenshot 5) */
+.table-wrapper {
+  margin-top: 40px;
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.outline-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.outline-table th {
+  background-color: var(--neutral-bg);
+  padding: 16px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--neutral-border);
+}
+
+.outline-table td {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--neutral-border);
+}
+
+.outline-table tr:last-child td {
+  border-bottom: none;
+}
+
+.outline-table tr:hover td {
+  background-color: var(--primary-light);
+}
+
+.text-weight {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.text-count {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Module Summary Checklist (Screenshot 8)
+   ========================================================================== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.summary-card {
+  background-color: var(--neutral-bg);
+  border: 1px solid var(--neutral-border);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: hsl(252, 78%, 88%);
+}
+
+.summary-card .summary-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border: 1px solid hsl(252, 78%, 90%);
+}
+
+.summary-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.summary-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Learning Outcomes (Screenshot 9)
+   ========================================================================== */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.outcome-card {
+  background-color: var(--neutral-bg);
+  border: 1px solid var(--neutral-border);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.outcome-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: hsl(252, 78%, 88%);
+}
+
+.outcome-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-round);
+  background-color: hsl(222, 19%, 15%);
+  color: var(--neutral-card);
+  margin-bottom: 20px;
+}
+
+.outcome-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.outcome-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Assessments Section (New Feature Request)
+   ========================================================================== */
+.assessments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.assessment-card {
+  background-color: var(--neutral-card);
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.assessment-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.assessment-card.not-available {
+  opacity: 0.75;
+  filter: grayscale(20%);
+}
+
+.assessment-card.not-available:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--neutral-border);
+}
+
+/* Badge styles */
+.badge-status {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-status.available {
+  background-color: var(--success-light);
+  color: var(--success);
+  border: 1px solid hsl(142, 76%, 90%);
+}
+
+.badge-status.coming-soon {
+  background-color: var(--text-light);
+  color: white;
+}
+
+.assessment-card h3 {
+  font-size: 20px;
+  font-weight: 750;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.assessment-card .desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.assessment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  border-top: 1px solid var(--neutral-border);
+  border-bottom: 1px solid var(--neutral-border);
+  padding: 16px 0;
+}
+
+.detail-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.detail-line svg {
+  color: var(--text-light);
+}
+
+/* Assessment Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--neutral-card);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(127, 90, 240, 0.25);
+}
+
+.btn-disabled {
+  background-color: hsl(210, 14%, 93%);
+  color: var(--text-light);
+  border-color: var(--neutral-border);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+.app-footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 14px;
+  color: var(--text-light);
+  border-top: 1px solid var(--neutral-border);
+  background-color: var(--neutral-card);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 32px;
+  }
+  
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .alert-banner {
+    justify-content: center;
+  }
+  
+  .passing-req-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    height: auto;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .header-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .view-card {
+    padding: 24px;
+  }
+  
+  .formats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .structure-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .outline-table th, 
+  .outline-table td {
+    padding: 12px 16px;
+  }
+}

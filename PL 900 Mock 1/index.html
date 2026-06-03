@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PL-900 Mock-1 — KVJ Analytics</title>
+<style>
+/* ==========================================================================
+   PL-900 Mock Test 1 Premium Theme (Aligned with Mock Test 2)
+   ========================================================================== */
+:root {
+  /* Color Palette - HSL Tailored Colors */
+  --primary: hsl(252, 78%, 60%);        /* Modern Royal Purple */
+  --primary-hover: hsl(252, 78%, 52%);
+  --primary-light: hsl(252, 78%, 97%);
+  
+  --secondary: hsl(199, 89%, 48%);      /* Electric Sky Blue */
+  --secondary-hover: hsl(199, 89%, 40%);
+  --secondary-light: hsl(199, 89%, 97%);
+
+  --accent: hsl(36, 100%, 50%);         /* Warning Gold for Mark for Review */
+  --accent-light: hsl(36, 100%, 96%);
+
+  --success: hsl(142, 76%, 36%);        /* Emerald Green for Pass/Correct */
+  --success-light: hsl(142, 76%, 96%);
+
+  --danger: hsl(354, 76%, 48%);         /* Crimson Red for Fail/Incorrect */
+  --danger-light: hsl(354, 76%, 96%);
+
+  --neutral-bg: hsl(210, 40%, 98%);     /* Soft Cool Grey for Page Background */
+  --neutral-card: hsl(0, 0%, 100%);     /* Pure White Card Background */
+  --neutral-border: hsl(210, 14%, 91%); /* Thin grey dividers */
+  
+  /* Text Colors */
+  --text-main: hsl(210, 24%, 16%);      /* Deep Slate for Primary Text */
+  --text-muted: hsl(210, 12%, 46%);     /* Medium Slate for Secondary/Muted Text */
+  --text-light: hsl(210, 8%, 60%);
+
+  /* Shadow Systems */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-premium: 0 20px 25px -5px rgba(127, 90, 240, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+
+  /* Borders and Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-round: 50%;
+  
+  /* Animations */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Legacy compatibility overrides */
+  --bg: var(--neutral-bg);
+  --card-bg: var(--neutral-card);
+  --text: var(--text-main);
+  --border: var(--neutral-border);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+html,body{
+  height:100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+
+/* BACK BUTTON */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-border);
+  background-color: var(--neutral-card);
+  transition: all var(--transition-fast);
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: var(--primary);
+  border-color: hsl(252, 78%, 90%);
+  background-color: var(--primary-light);
+  transform: translateX(-2px);
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 72px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--neutral-border);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-main);
+}
+.logo-area img {
+  height: 32px;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timer-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--neutral-bg);
+  border: 1px solid var(--neutral-border);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.timer-box.warning {
+  background-color: var(--danger-light);
+  border-color: hsl(354, 76%, 85%);
+  color: var(--danger);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+
+/* BODY */
+.body-wrap {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 32px;
+  gap: 32px;
+  background-color: var(--neutral-bg);
+}
+
+/* SIDEBAR / NAVIGATOR */
+.sidebar-wrapper {
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-card {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.nav-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--neutral-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.nav-status {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.nav-body {
+  padding: 24px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.q-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.q-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-card);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.q-btn:hover {
+  background: var(--primary-light);
+  border-color: hsl(252, 78%, 80%);
+  color: var(--primary);
+}
+
+.q-btn.active {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.q-btn.answered {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.q-btn.answered:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.q-btn.review {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.q-btn.review:hover {
+  background: hsl(36, 100%, 42%);
+  border-color: hsl(36, 100%, 42%);
+}
+
+.q-btn.wrong {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.nav-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--neutral-border);
+  background: hsl(210, 40%, 99%);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.leg-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--neutral-border);
+}
+
+.leg-box.active {
+  border: 2px solid var(--primary);
+}
+
+.leg-box.answered {
+  background: var(--primary);
+  border: none;
+}
+
+.leg-box.review {
+  background: var(--accent);
+  border: none;
+}
+
+/* CONTENT / QUESTION CARD */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.q-card {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.q-card-top {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--neutral-border);
+}
+
+.breadcrumb-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.bc-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.progress-container {
+  height: 8px;
+  background: var(--neutral-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary);
+  transition: width var(--transition-normal);
+}
+
+.q-card-body {
+  padding: 40px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.q-text {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--neutral-card);
+}
+
+.opt:hover {
+  background-color: var(--primary-light);
+  border-color: hsl(252, 78%, 80%);
+}
+
+.opt.selected {
+  border: 2px solid var(--primary);
+  background-color: var(--primary-light);
+}
+
+.opt.correct {
+  border: 2px solid var(--success);
+  background-color: var(--success-light);
+}
+
+.opt.incorrect {
+  border: 2px solid var(--danger);
+  background-color: var(--danger-light);
+}
+
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid hsl(210, 14%, 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.opt.selected .radio-circle {
+  border-color: var(--primary);
+}
+
+.opt.selected .radio-circle::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.opt-label {
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 16px;
+  width: 24px;
+}
+
+.opt-content {
+  font-size: 16px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* CARD FOOTER */
+.card-footer {
+  padding: 24px 40px;
+  border-top: 1px solid var(--neutral-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-card);
+  color: var(--text-main);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--primary-light);
+  border-color: hsl(252, 78%, 80%);
+  color: var(--primary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: hsl(354, 76%, 40%);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* YES/NO */
+.yn-wrap {
+  display: flex;
+  gap: 16px;
+}
+
+.yn-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--neutral-border);
+  background: var(--neutral-card);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-main);
+}
+
+.yn-btn:hover {
+  border-color: hsl(252, 78%, 80%);
+  background: var(--primary-light);
+}
+
+.yn-btn.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.yn-btn.correct {
+  border-color: var(--success);
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.yn-btn.incorrect {
+  border-color: var(--danger);
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+/* DROPDOWN */
+.dropdown-wrap select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--neutral-border);
+  font-size: 15px;
+  color: var(--text-main);
+  background: var(--neutral-card);
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.dropdown-wrap select:focus {
+  border-color: var(--primary);
+}
+
+/* DRAG DROP */
+.drag-drop {
+  margin-top: 10px;
+}
+
+.dd-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dd-label {
+  width: 240px;
+  font-size: 15px;
+  color: var(--text-main);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dd-target {
+  flex: 1;
+  min-height: 48px;
+  border: 2px dashed var(--neutral-border);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-size: 15px;
+  color: var(--text-muted);
+  background: var(--neutral-bg);
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-fast);
+}
+
+.dd-target.has-item {
+  border-style: solid;
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.dd-target.correct-item {
+  border-style: solid;
+  border-color: var(--success);
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.dd-target.incorrect-item {
+  border-style: solid;
+  border-color: var(--danger);
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.dd-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--neutral-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+}
+
+.dd-chip {
+  padding: 10px 20px;
+  border-radius: 24px;
+  background: var(--neutral-card);
+  border: 1.5px solid var(--neutral-border);
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: grab;
+  user-select: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.dd-chip.used {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: hsl(210, 14%, 93%);
+  border-color: var(--neutral-border);
+  box-shadow: none;
+}
+
+.dd-chip:hover:not(.used) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* FEEDBACK */
+.feedback {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.feedback.correct {
+  background: var(--success-light);
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+.feedback.incorrect {
+  background: var(--danger-light);
+  border-left: 4px solid var(--danger);
+  color: var(--danger);
+}
+
+/* OVERLAY/MODAL */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 520px;
+  width: 92%;
+  text-align: center;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--neutral-border);
+}
+
+.modal h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.modal p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.summary-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.sum-card {
+  flex: 1;
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid var(--neutral-border);
+}
+
+.sum-card .num {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.sum-card .lbl {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  margin-top: 4px;
+}
+
+.sum-card.pending {
+  background: var(--danger-light);
+  border-color: hsl(354, 76%, 90%);
+}
+.sum-card.pending .num, .sum-card.pending .lbl {
+  color: var(--danger);
+}
+
+.sum-card.review {
+  background: var(--accent-light);
+  border-color: hsl(36, 100%, 90%);
+}
+.sum-card.review .num, .sum-card.review .lbl {
+  color: var(--accent);
+}
+
+.sum-card.answered {
+  background: var(--success-light);
+  border-color: hsl(142, 76%, 90%);
+}
+.sum-card.answered .num, .sum-card.answered .lbl {
+  color: var(--success);
+}
+
+.modal-q-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 28px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.modal-q-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neutral-border);
+  background: var(--neutral-card);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.modal-q-btn.answered {
+  background: var(--success-light);
+  border-color: hsl(142, 76%, 80%);
+  color: var(--success);
+}
+
+.modal-q-btn.review {
+  background: var(--accent-light);
+  border-color: hsl(36, 100%, 80%);
+  color: var(--accent);
+}
+
+.modal-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* DRAG-BLANK QUESTIONS */
+.blank-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 32px;
+}
+
+.blank-target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 44px;
+  border: 2px dashed var(--primary);
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  padding: 0 16px;
+  font-size: 15px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.blank-target.filled {
+  border-style: solid;
+  background: var(--primary);
+  color: #fff;
+}
+
+.blank-target:hover {
+  background: hsl(252, 78%, 93%);
+}
+
+.chip-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--neutral-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+}
+
+.drop-chip {
+  padding: 10px 20px;
+  background: var(--neutral-card);
+  border: 1.5px solid var(--neutral-border);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: grab;
+  transition: all var(--transition-fast);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.drop-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.drop-chip.used {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: hsl(210, 14%, 93%);
+  border-color: var(--neutral-border);
+  box-shadow: none;
+}
+
+/* REPORT PAGE */
+.report-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--neutral-bg);
+}
+
+.summary-card {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+  box-shadow: var(--shadow-premium);
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.sum-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.status-pill.failed {
+  background: var(--danger);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+}
+
+.status-pill.passed {
+  background: var(--success);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.gauge-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+}
+
+.gauge-svg {
+  transform: rotate(-90deg);
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: var(--neutral-bg);
+  stroke-width: 8;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--transition-slow);
+}
+
+.rev-item {
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+  padding: 32px;
+  margin-bottom: 24px;
+  position: relative;
+  box-shadow: var(--shadow-premium);
+}
+
+.rev-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--neutral-border);
+  padding-bottom: 16px;
+}
+
+.rev-meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rev-status {
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.rev-status.correct {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.rev-status.wrong {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.rev-status.un {
+  background: var(--neutral-bg);
+  color: var(--text-muted);
+}
+
+.rev-q {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+.rev-opt {
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-border);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  background: var(--neutral-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rev-opt.c {
+  background: var(--success-light);
+  border-color: hsl(142, 76%, 85%);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.rev-opt.w {
+  background: var(--danger-light);
+  border-color: hsl(354, 76%, 85%);
+  color: var(--danger);
+}
+
+.rev-exp {
+  background: var(--neutral-bg);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-top: 24px;
+  border: 1px solid var(--neutral-border);
+}
+
+.rev-exp b {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+.rev-exp p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* LANDING PAGE */
+.welcome-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--neutral-bg);
+}
+
+.welcome-card {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+  background: var(--neutral-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-border);
+  box-shadow: var(--shadow-premium);
+  padding: 48px;
+}
+
+.w-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  letter-spacing: -0.8px;
+}
+
+.w-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 48px;
+  line-height: 1.5;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.info-card {
+  background-color: var(--neutral-bg);
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: hsl(252, 78%, 90%);
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-round);
+  background-color: var(--neutral-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--neutral-border);
+}
+
+.info-lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.info-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.info-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.instr-box {
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 32px 40px;
+  text-align: left;
+  border: 1px solid hsl(252, 78%, 90%);
+  margin-bottom: 40px;
+}
+
+.instr-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.instr-list {
+  list-style: none;
+  padding: 0;
+}
+
+.instr-item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.instr-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.btn-start {
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 10px 15px -3px rgba(127, 90, 240, 0.3);
+}
+
+.btn-start:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(127, 90, 240, 0.4);
+}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<script>
+// Marks: 1-mark questions (MCQ/YN/DD/Drag) and 3-mark questions (multi-select)
+// We have 45 questions total. Multi-select questions: Q4,Q5,Q15,Q27 = 4 questions * 3 = 12
+// Single mark questions: 41 * 1 = 41. But we need 100 total.
+// So: we need 100 - 41 = 59 from 3-mark questions => ~20 questions at 3 marks
+// Let's mark all multi-select AND some MCQs as 3-mark to reach 100.
+// Current multi (4 q * 3 = 12) + single (41 * 1 = 41) = 53. Need 47 more → convert 23-24 more MCQs to 2-mark
+// Simpler: 45 questions, some worth 2 marks, some worth 1 = 100
+// 45*1=45, need 55 more. So 55 questions get +1 bonus? No. 
+// Best: 10 questions worth 3 marks + 35 questions worth 2 marks = 30+70=100. Clean!
+// OR: 20 questions worth 3 marks (60) + 25 questions worth 2 marks (50) = 110. No.
+// OR: 10 @ 3marks (30) + 35 @ 2marks (70) = 100. Yes!
+// We'll mark multi-select and drag-drop as 3-mark (6 questions: Q4,Q5,Q10,Q15,Q27,Q32 = 18), rest 1-mark (39*1=39) = 57. Not 100.
+// Clean solution: All questions 2 marks = 90, add 10 bonus questions 3-mark = too complex.
+// FINAL: Give each question a `marks` property. Total = 100.
+// 45 questions. 10 questions @ 3 marks = 30. 35 questions @ 2 marks = 70. Total = 100.
+// 3-mark questions: multi-select + drag-drop (Q4,Q5,Q10,Q15,Q27,Q32 = 6 questions) + 4 more scenario-based
+// 2-mark questions: remaining 39 questions. But 6*3 + 39*2 = 18+78 = 96. Need 4 more.
+// Make 4 scenario questions 3-mark too: Q6,Q16,Q21,Q28 = 4 more.
+// 10*3 + 35*2 = 30+70 = 100. Perfect!
+
+const THREE_MARK_IDS = [4,5,6,10,15,16,21,27,28,32];
+
+const QUESTIONS=[
+{id:1,type:'mcq',text:'Which Power Platform component is used to build low-code business applications?',options:['Power BI','Power Automate','Power Apps','Dataverse'],correct:2,explanation:'Power Apps allows users to build low-code business applications for web and mobile.'},
+{id:2,type:'mcq',text:'Which service is used to automate approval workflows?',options:['Power BI','Power Apps','Power Automate','AI Builder'],correct:2,explanation:'Power Automate is designed to automate workflows including approvals and notifications.'},
+{id:3,type:'mcq',text:'Which Power Platform component is primarily used for data visualization?',options:['Dataverse','Power Apps','Power BI','Power Automate'],correct:2,explanation:'Power BI is used for creating reports, dashboards, and data visualizations.'},
+{id:4,type:'multi',text:'Which services are part of Microsoft Power Platform?',options:['Power Apps','Power BI','Power Automate','Azure Virtual Machines'],correct:[0,1,2],explanation:'Power Apps, Power BI, and Power Automate are Power Platform services. Azure Virtual Machines is not.'},
+{id:5,type:'multi',text:'Which capabilities are provided by Dataverse?',options:['Tables','Relationships','Role-based security','Screen layouts'],correct:[0,1,2],explanation:'Dataverse provides structured tables, relationships, and security. Screen layouts belong to apps.'},
+{id:6,type:'mcq',text:'A company wants to build a mobile app for employees to submit expense claims. The data must be stored securely and accessed by multiple users. What should be used?',options:['Excel + Power BI','Power Apps + Dataverse','Power BI only','Power Automate only'],correct:1,explanation:'Power Apps builds the app and Dataverse securely stores multi-user data.'},
+{id:7,type:'mcq',text:'A user wants to receive an email automatically when a file is created in SharePoint. What should be used?',options:['Power Apps','Power BI','Power Automate','AI Builder'],correct:2,explanation:'Power Automate can trigger actions when SharePoint events occur.'},
+{id:8,type:'yesno',text:'Sharing a Power App with a user automatically grants access to the underlying data source.',correct:'No',explanation:'App sharing does not give data permissions. Data access is managed separately.'},
+{id:9,type:'yesno',text:'A model-driven app can be created without Dataverse.',correct:'No',explanation:'Model-driven apps always require Dataverse.'},
+{id:10,type:'drag',text:'Match each requirement to the correct Power Platform component.',items:['Build a mobile app','Automate approvals','Create dashboards'],options:['Power BI','Power Apps','Power Automate'],correct:['Power Apps','Power Automate','Power BI'],explanation:'Each Power Platform tool serves a distinct purpose.'},
+{id:11,type:'drag-blank',text:'To automate a business approval process, you should use ___.', options:['Power Apps','Power Automate','Power BI'],correct:'Power Automate',explanation:'Approval workflows are handled by Power Automate.'},
+{id:12,type:'mcq',text:'Which flow type runs automatically when an event occurs?',options:['Instant cloud flow','Scheduled cloud flow','Automated cloud flow','Desktop flow'],correct:2,explanation:'Automated flows start when an event occurs.'},
+{id:13,type:'mcq',text:'Which flow type is manually triggered by a user?',options:['Automated','Instant','Scheduled','Event-based'],correct:1,explanation:'Instant flows are manually triggered.'},
+{id:14,type:'mcq',text:'Which flow type runs every day at a fixed time?',options:['Automated','Instant','Scheduled','Approval'],correct:2,explanation:'Scheduled flows run on a time-based schedule.'},
+{id:15,type:'multi',text:'Which services can AI Builder integrate with?',options:['Power Apps','Power Automate','Power BI Desktop','Dataverse'],correct:[0,1,3],explanation:'AI Builder integrates with Power Apps, Power Automate, and Dataverse.'},
+{id:16,type:'mcq',text:'A company wants to extract invoice number and total amount from scanned invoices automatically. What should be used?',options:['Power Apps','Power BI','AI Builder – Form Processing','Dataverse'],correct:2,explanation:'AI Builder Form Processing extracts structured data from documents.'},
+{id:17,type:'mcq',text:'Which feature is used to prevent business data from being sent to personal email accounts?',options:['Security roles','DLP policies','Business rules','AI Builder'],correct:1,explanation:'DLP policies control how data is shared between connectors.'},
+{id:18,type:'mcq',text:'Which rule is enforced by Data Loss Prevention (DLP) policies?',options:['All connectors can be used together','Business and non-business connectors cannot be used together','Only premium connectors are blocked','AI Builder must be disabled'],correct:1,explanation:'DLP prevents mixing business and non-business connectors.'},
+{id:19,type:'mcq',text:'Which Power Platform feature separates development and production environments?',options:['Dashboards','Environments','Connectors','Security roles'],correct:1,explanation:'Environments separate resources and data.'},
+{id:20,type:'mcq',text:'Which Power Platform component stores relational business data?',options:['Excel','SharePoint','Dataverse','Power BI'],correct:2,explanation:'Dataverse stores secure relational business data.'},
+{id:21,type:'mcq',text:'A manager wants to receive alerts when sales fall below a target shown in a report. What should be used?',options:['Power Apps','Power BI only','Power BI + Power Automate','AI Builder'],correct:2,explanation:'Power BI monitors data and Power Automate sends alerts.'},
+{id:22,type:'yesno',text:'Power BI dashboards can contain multiple pages.',correct:'False',explanation:'Dashboards are single-page visuals. Reports have multiple pages.'},
+{id:23,type:'yesno',text:'Dataverse is a premium data source.',correct:'True',explanation:'Dataverse requires premium licensing.'},
+{id:24,type:'mcq',text:'Which Power Apps type requires Dataverse?',options:['Canvas app','SharePoint app','Model-driven app','Excel app'],correct:2,explanation:'Model-driven apps are built on Dataverse.'},
+{id:25,type:'mcq',text:'Which language is used to write formulas in Power Apps?',options:['JavaScript','Python','Power Fx','SQL'],correct:2,explanation:'Power Fx is the formula language for Power Apps.'},
+{id:26,type:'drag-blank',text:'To securely store relational business data for a Power App, you should use ___.',options:['Excel','SharePoint','Dataverse'],correct:'Dataverse',explanation:'Dataverse is designed for secure relational data.'},
+{id:27,type:'multi',text:'Which actions can Power Automate perform?',options:['Send approval requests','Synchronize data','Create dashboards','Send notifications'],correct:[0,1,3],explanation:'Dashboards are created in Power BI, not Power Automate.'},
+{id:28,type:'mcq',text:'A flow reads a receipt, extracts data, and sends it for approval. Which tools are involved?',options:['Power Apps + Power BI','Power Automate + AI Builder','Dataverse only','Power BI + AI Builder'],correct:1,explanation:'AI Builder extracts data and Power Automate manages the workflow.'},
+{id:29,type:'yesno',text:'Can Power Automate flows be triggered from Power Apps?',correct:'Yes',explanation:'Power Apps can trigger flows.'},
+{id:30,type:'mcq',text:'Which Power Platform component adds AI capabilities without coding?',options:['Power BI','Power Apps','AI Builder','Dataverse'],correct:2,explanation:'AI Builder provides AI without code.'},
+{id:31,type:'mcq',text:'Which tool is best suited for creating KPI dashboards?',options:['Power Automate','Power Apps','Power BI','AI Builder'],correct:2,explanation:'Power BI is used for KPI dashboards.'},
+{id:32,type:'drag',text:'Match the flow type to its trigger.',items:['Automated','Instant','Scheduled'],options:['Time-based','Manual','Event-based'],correct:['Event-based','Manual','Time-based'],explanation:'Flow types are defined by how they start.'},
+{id:33,type:'mcq',text:'You need a data entry app, secure data storage, and analytics. What should you use?',options:['Power Apps + Excel + Power BI','Power Apps + Dataverse + Power BI','Power BI only','AI Builder only'],correct:1,explanation:'This combination covers app, data, and analytics.'},
+{id:34,type:'yesno',text:'Business rules in Dataverse require writing code.',correct:'False',explanation:'Business rules are no-code.'},
+{id:35,type:'mcq',text:'Which service is used to create automated workflows?',options:['Power BI','Power Apps','Power Automate','Dataverse'],correct:2,explanation:'Power Automate creates workflows.'},
+{id:36,type:'mcq',text:'Which connector group is intended for enterprise business data?',options:['Non-business','Blocked','Business','Personal'],correct:2,explanation:'Business connectors handle enterprise data.'},
+{id:37,type:'mcq',text:'An app is shared with a user, but the user cannot see any data. What is the most likely reason?',options:['App is not published','User does not have permission to the data source','DLP policy error','License expired'],correct:1,explanation:'Data permissions are separate from app sharing.'},
+{id:38,type:'mcq',text:'Which Power Platform component is used for predictive analysis?',options:['Power BI','Power Automate','AI Builder','Dataverse'],correct:2,explanation:'AI Builder provides prediction models.'},
+{id:39,type:'mcq',text:'Which Power BI item is created in the Power BI Service?',options:['Report','Dataset','Dashboard','Data model'],correct:2,explanation:'Dashboards are created in the Power BI Service.'},
+{id:40,type:'mcq',text:'Which Power Platform component improves decision-making using AI models?',options:['Power BI','Power Apps','AI Builder','Power Automate'],correct:2,explanation:'AI Builder uses AI models to support decisions.'},
+{id:41,type:'mcq',text:'PL-900 is best described as which type of certification?',options:['Advanced','Expert','Fundamentals','Developer'],correct:2,explanation:'PL-900 is a fundamentals-level certification.'},
+{id:42,type:'mcq',text:'Which feature defines rules to protect data sharing across connectors?',options:['AI Builder','Power Apps','DLP policies','Power BI'],correct:2,explanation:'DLP policies define data-sharing rules.'},
+{id:43,type:'mcq',text:'Which service uses triggers and actions to perform tasks?',options:['Power Apps','Power BI','Power Automate','Dataverse'],correct:2,explanation:'Power Automate workflows use triggers and actions.'},
+{id:44,type:'mcq',text:'Which data source is best for secure, multi-user applications?',options:['Excel','SharePoint','Dataverse','OneDrive'],correct:2,explanation:'Dataverse is designed for secure multi-user scenarios.'},
+{id:45,type:'mcq',text:'Which Power Platform component is responsible for creating dashboards?',options:['Power Apps','Power Automate','Power BI','AI Builder'],correct:2,explanation:'Power BI is used to create dashboards.'}
+].map(q=>({...q, marks: THREE_MARK_IDS.includes(q.id)?3:2}));
+
+const TOTAL_MARKS = QUESTIONS.reduce((s,q)=>s+q.marks,0); // should be 100
+
+let state={
+  screen:'welcome', // Start with welcome screen
+  current:0,
+  answers:{},
+  marked:{},
+  dragState:{},
+  showModal:false,
+  seconds:3000, // 50 minutes
+  submitted:false
+};
+
+let timerInterval=null;
+
+function startTimer(){
+  timerInterval=setInterval(()=>{
+    state.seconds=Math.max(0,state.seconds-1);
+    renderTimer();
+    if(state.seconds===0&&!state.submitted) submitQuiz();
+  },1000);
+}
+
+function renderTimer(){
+  const el=document.getElementById('timer-display');
+  if(el){
+    const m=Math.floor(state.seconds/60);
+    const s=state.seconds%60;
+    el.textContent=m+':'+(s<10?'0':'')+s;
+    if(state.seconds<=300) el.parentElement&&(el.parentElement.className='timer warning');
+  }
+}
+
+function isCorrect(q,ans){
+  if(ans===undefined||ans===null) return false;
+  if(q.type==='mcq') return ans===q.correct;
+  if(q.type==='multi'){
+    if(!Array.isArray(ans)||ans.length!==q.correct.length) return false;
+    return q.correct.every(c=>ans.includes(c));
+  }
+  if(q.type==='yesno') return ans===q.correct;
+  if(q.type==='dropdown') return ans===q.correct;
+  if(q.type==='drag'){
+    if(!Array.isArray(ans)||ans.length!==q.correct.length) return false;
+    return ans.every((a,i)=>a===q.correct[i]);
+  }
+  if(q.type==='drag-blank') return ans===q.correct;
+  return false;
+}
+
+function getScore(){
+  return QUESTIONS.reduce((s,q)=>s+(isCorrect(q,state.answers[q.id])?q.marks:0),0);
+}
+
+function getAnsweredCount(){
+  return QUESTIONS.filter(q=>{
+    const a=state.answers[q.id];
+    if(a===undefined||a===null) return false;
+    if(Array.isArray(a)&&a.length===0) return false;
+    return true;
+  }).length;
+}
+
+function hasAnswer(q){
+  const a=state.answers[q.id];
+  if(a===undefined||a===null) return false;
+  if(Array.isArray(a)&&a.length===0) return false;
+  return true;
+}
+
+function renderTopbar(showTimer, title = "PL-900 Mock Test 1") {
+  return '<div class="topbar">' +
+    '<div style="display:flex;align-items:center;">' +
+      '<a href="../index.html" class="back-button" aria-label="Back to Course">' +
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+          '<line x1="19" y1="12" x2="5" y2="12"></line>' +
+          '<polyline points="12 19 5 12 12 5"></polyline>' +
+        '</svg>' +
+        '<span>Back</span>' +
+      '</a>' +
+      '<div class="logo-area"><img src="logo.png" alt="Logo"> ' + title + '</div>' +
+    '</div>' +
+    (showTimer ? 
+      '<div class="top-right">' +
+        '<div class="timer-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span id="timer-display">50:00</span></div>' +
+      '</div>' : ''
+    ) +
+  '</div>';
+}
+
+function render(){
+  const app=document.getElementById('app');
+  if(state.screen==='welcome') return renderWelcome();
+  if(state.screen==='report') return renderReport();
+
+  const q=QUESTIONS[state.current];
+  const answered=getAnsweredCount();
+  const markedCount=Object.values(state.marked).filter(Boolean).length;
+  const isLast=state.current===QUESTIONS.length-1;
+
+  const progress=Math.round((state.current+1)/QUESTIONS.length*100);
+  app.innerHTML=
+    renderTopbar(true) +
+    '<div class="body-wrap">'+
+      '<div class="sidebar-wrapper">'+
+        '<div class="nav-card">'+
+          '<div class="nav-header">'+
+            '<div class="nav-title">Question Navigator</div>'+
+            '<div class="nav-status">'+answered+'/'+QUESTIONS.length+' Answered</div>'+
+          '</div>'+
+          '<div class="nav-body">'+
+            '<div class="q-grid">'+
+              QUESTIONS.map((qq,i)=>{
+                let cls='q-btn';
+                if(i===state.current) cls+=' active';
+                if(state.submitted){
+                  if(hasAnswer(qq)) cls+=isCorrect(qq,state.answers[qq.id])?' answered':' wrong';
+                } else {
+                  if(hasAnswer(qq)) cls+=' answered';
+                  if(state.marked[qq.id]) cls+=' review';
+                }
+                return '<button class="'+cls+'" onclick="goTo('+i+')">'+(i+1)+'</button>';
+              }).join('')+
+            '</div>'+
+          '</div>'+
+          '<div class="nav-footer">'+
+            '<div class="legend">'+
+              '<div class="leg-item"><div class="leg-box active"></div> Current</div>'+
+              '<div class="leg-item"><div class="leg-box answered"></div> Answered</div>'+
+              '<div class="leg-item"><div class="leg-box review"></div> Review</div>'+
+              '<div class="leg-item"><div class="leg-box"></div> Unanswered</div>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="content">'+
+        '<div class="q-card">'+
+          '<div class="q-card-top">'+
+            '<div class="breadcrumb-row">'+
+              '<div class="bc-text">Question '+(state.current+1)+' of '+QUESTIONS.length+'</div>'+
+            '</div>'+
+            '<div class="progress-container"><div class="progress-bar" style="width:'+progress+'%"></div></div>'+
+          '</div>'+
+          '<div class="q-card-body">'+
+            '<div class="q-text">Q'+(state.current+1)+'. '+(q.type==='drag-blank'?'':q.text)+'</div>'+
+            renderQuestion(q)+
+            (state.submitted?renderFeedback(q):'')+
+          '</div>'+
+          '<div class="card-footer">'+
+            (!state.submitted?'<button class="btn'+(state.marked[q.id]?' marked':'')+'" onclick="toggleMark('+q.id+')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zM4 22v-7"/></svg> Marked for Review</button>':'<div></div>')+
+            '<div class="nav-btns">'+
+              '<button class="btn" onclick="prevQ()" '+(state.current===0?'disabled':'')+'><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Previous</button>'+
+              (isLast && !state.submitted ? 
+                '<button class="btn btn-danger" onclick="submitQuiz()">Submit Exam</button>' :
+                '<button class="btn" onclick="nextQ()">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>'
+              )+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    (state.showModal?renderModal(answered,markedCount):'');
+
+  renderTimer();
+  setupDrag();
+}
+
+function renderWelcome(){
+  const app=document.getElementById('app');
+  app.innerHTML=
+    renderTopbar(false) +
+    '<div class="welcome-wrap">'+
+      '<div class="welcome-card">'+
+        '<h1 class="w-title">PL-900: Microsoft Power Platform Fundamentals</h1>'+
+        '<p class="w-sub">Validate your cloud knowledge and prepare for the official certification with Mock Test 1.</p>'+
+        '<div class="info-grid">'+
+          '<div class="info-card">'+
+            '<div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>'+
+            '<div class="info-lbl">Total Questions</div>'+
+            '<div class="info-val">45 Questions</div>'+
+            '<div class="info-desc">Single-select & multi-select scenarios</div>'+
+          '</div>'+
+          '<div class="info-card">'+
+            '<div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>'+
+            '<div class="info-lbl">Exam Duration</div>'+
+            '<div class="info-val">50 Minutes</div>'+
+            '<div class="info-desc">Time limit with auto-submission</div>'+
+          '</div>'+
+          '<div class="info-card">'+
+            '<div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>'+
+            '<div class="info-lbl">Passing Mark</div>'+
+            '<div class="info-val">84% Required</div>'+
+            '<div class="info-desc">84 out of 100 maximum marks</div>'+
+          '</div>'+
+          '<div class="info-card">'+
+            '<div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>'+
+            '<div class="info-lbl">Weighted Scoring</div>'+
+            '<div class="info-val">100 Marks Max</div>'+
+            '<div class="info-desc">35 questions at 2 marks, 10 complex questions at 3 marks</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="instr-box">'+
+          '<h2 class="instr-title">Exam Instructions</h2>'+
+          '<ul class="instr-list">'+
+            '<li class="instr-item">Once you click <b>Start Exam</b>, the 50-minute timer will begin immediately and cannot be paused.</li>'+
+            '<li class="instr-item">Questions are presented one by one. You can jump directly to any question using the grid palette.</li>'+
+            '<li class="instr-item">You can mark questions for review; they will show up flagged in the grid palette for easy access.</li>'+
+            '<li class="instr-item">Multi-select questions will display square checkboxes. Single-select questions will display round radio buttons.</li>'+
+            '<li class="instr-item">If you do not finish within 50 minutes, your answers will be automatically submitted for grading.</li>'+
+            '<li class="instr-item">Your score and completion time will be registered at the end.</li>'+
+          '</ul>'+
+        '</div>'+
+        '<button class="btn-start" onclick="startExam()">Start Exam</button>'+
+      '</div>'+
+    '</div>';
+}
+
+function startExam(){
+  state.screen='quiz';
+  state.seconds=3000;
+  render();
+  startTimer();
+}
+
+function renderReport(){
+  const app=document.getElementById('app');
+  const score=getScore();
+  const pct=Math.round(score/TOTAL_MARKS*100);
+  const timeTaken=3000-state.seconds;
+  const mm=Math.floor(timeTaken/60);
+  const ss=timeTaken%60;
+  const timeStr=mm+' min(s) '+ss+' sec(s)';
+  const passed=pct>=84;
+  const dash=Math.round(314 - (314 * pct / 100));
+
+  app.innerHTML=
+    renderTopbar(false) +
+    '<div class="report-wrap">'+
+      '<div class="summary-card">'+
+        '<h2 class="sum-title">Exam Complete!</h2>'+
+        '<div class="status-pill '+(passed?'passed':'failed')+'">'+(passed?'PASSED':'FAILED')+'</div>'+
+        '<div class="gauge-wrap">'+
+          '<svg class="gauge-svg" width="120" height="120">'+
+            '<circle class="gauge-bg" cx="60" cy="60" r="50"></circle>'+
+            '<circle class="gauge-fill" cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: '+dash+'"></circle>'+
+          '</svg>'+
+          '<div class="gauge-text" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#1E293B;">'+pct+'%</div>'+
+        '</div>'+
+        '<p style="font-size:15px;color:#64748B;font-weight:600;margin-top:20px;">You scored '+score+' out of '+TOTAL_MARKS+' marks.</p>'+
+      '</div>'+
+      '<div class="stats-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;max-width:800px;margin-bottom:40px;">'+
+        '<div class="stat-card" style="background:#fff;border-radius:12px;border:1px solid #E5E7EB;padding:16px;text-align:center;"><div class="st-lbl" style="font-size:10px;font-weight:700;color:#6B7280;text-transform:uppercase;">Time Spent</div><div class="st-val" style="font-size:18px;font-weight:800;color:#1E293B;">'+timeStr+'</div></div>'+
+        '<div class="stat-card" style="background:#fff;border-radius:12px;border:1px solid #E5E7EB;padding:16px;text-align:center;"><div class="st-lbl" style="font-size:10px;font-weight:700;color:#6B7280;text-transform:uppercase;">Correct Answers</div><div class="st-val" style="font-size:18px;font-weight:800;color:#1E293B;">'+getScore() / 2+' / '+QUESTIONS.length+'</div></div>'+
+        '<div class="stat-card" style="background:#fff;border-radius:12px;border:1px solid #E5E7EB;padding:16px;text-align:center;"><div class="st-lbl" style="font-size:10px;font-weight:700;color:#6B7280;text-transform:uppercase;">Required Score</div><div class="st-val" style="font-size:18px;font-weight:800;color:#1E293B;">84%</div></div>'+
+      '</div>'+
+      '<div class="rev-section" style="width:100%;max-width:800px;">'+
+        '<h2 style="font-size:22px;font-weight:800;color:#1E293B;margin-bottom:8px;">Detailed Answer Review</h2>'+
+        '<p style="font-size:14px;color:#64748B;margin-bottom:32px;">Review each question below to check correct answers and logical explanations.</p>'+
+        QUESTIONS.map((q,i)=>{
+          const ans=state.answers[q.id];
+          const correct=isCorrect(q,ans);
+          const status = (ans===undefined||ans===null) ? 'Unanswered' : (correct?'Correct':'Incorrect');
+          const statusCls = (ans===undefined||ans===null) ? 'un' : (correct?'correct':'wrong');
+          return '<div class="rev-item">'+
+            '<div class="rev-h">'+
+              '<div class="rev-meta">Question '+(i+1)+' (Q'+(i+1)+') &mdash; Weight: '+q.marks+' Marks</div>'+
+              '<div class="rev-status '+statusCls+'">'+status+'</div>'+
+            '</div>'+
+            '<div style="font-size:16px;font-weight:700;color:#1E293B;margin-bottom:20px;line-height:1.5;">'+q.text+'</div>'+
+            '<div class="options-review">'+
+              (q.type==='mcq'||q.type==='multi'?q.options.map((opt,oi)=>{
+                const lbl=String.fromCharCode(65+oi)+'. ';
+                let cls='rev-opt';
+                let isCorr = false;
+                if(q.type==='mcq') isCorr = oi===q.correct;
+                else if(q.type==='multi') isCorr = q.correct.includes(oi);
+                
+                if(isCorr) cls+=' c';
+                else if(q.type==='mcq' && ans===oi) cls+=' w';
+                else if(q.type==='multi' && Array.isArray(ans) && ans.includes(oi)) cls+=' w';
+                
+                return '<div class="'+cls+'"><span>'+lbl+opt+'</span> '+(isCorr?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:#10B981;"><path d="M20 6L9 17l-5-5"/></svg>':'')+'</div>';
+              }).join(''):'<div class="rev-opt c"><span>Correct Answer: '+ (Array.isArray(q.correct)?q.correct.join(', '):q.correct) +'</span></div>')+
+            '</div>'+
+            '<div class="rev-exp">'+
+              '<b>Explanation:</b>'+
+              '<p>'+q.explanation+'</p>'+
+            '</div>'+
+          '</div>';
+        }).join('')+
+      '</div>'+
+      '<div style="text-align:center;margin:60px 0 100px;">'+
+        '<button class="btn-start" onclick="retakeMock()">Restart Exam</button>'+
+      '</div>'+
+    '</div>';
+}
+
+function retakeMock(){
+  state={screen:'welcome',current:0,answers:{},marked:{},dragState:{},showModal:false,seconds:3000,submitted:false};
+  if(timerInterval)clearInterval(timerInterval);
+  timerInterval=null;render();
+}
+
+function renderQuestion(q){
+  const ans=state.answers[q.id];
+  const done=state.submitted;
+  if(q.type==='mcq'){
+    return '<div class="options">'+q.options.map((o,i)=>{
+      const lbl=String.fromCharCode(65+i)+'. ';
+      let cls='opt';
+      if(done){if(i===q.correct)cls+=' correct';else if(ans===i)cls+=' incorrect';}
+      else if(ans===i)cls+=' selected';
+      return '<div class="'+cls+'" onclick="'+(done?'':'selectMcq('+q.id+','+i+')')+'"><div class="radio-circle"></div><span class="opt-label">'+lbl+'</span><span class="opt-content">'+o+'</span></div>';
+    }).join('')+'</div>';
+  }
+  if(q.type==='multi'){
+    const sel=Array.isArray(ans)?ans:[];
+    return '<div class="options">'+q.options.map((o,i)=>{
+      const lbl=String.fromCharCode(65+i)+'. ';
+      let cls='opt';
+      if(done){if(q.correct.includes(i))cls+=' correct';else if(sel.includes(i))cls+=' incorrect';}
+      else if(sel.includes(i))cls+=' selected';
+      return '<div class="'+cls+'" onclick="'+(done?'':'toggleMulti('+q.id+','+i+')')+'"><div class="radio-circle" style="border-radius:4px;"></div><span class="opt-label">'+lbl+'</span><span class="opt-content">'+o+'</span></div>';
+    }).join('')+'</div>';
+  }
+  if(q.type==='yesno'){
+    const opts=q.correct==='Yes'||q.correct==='No'?['Yes','No']:['True','False'];
+    return '<div class="yn-wrap">'+opts.map(o=>{
+      let cls='yn-btn';
+      if(done){if(o===q.correct)cls+=' correct';else if(ans===o)cls+=' incorrect';}
+      else if(ans===o)cls+=' selected';
+      return '<button class="'+cls+'" onclick="'+(done?'':'selectYN('+q.id+',\''+o+'\')')+'">'+o+'</button>';
+    }).join('')+'</div>';
+  }
+  if(q.type==='drag-blank'){
+    const parts = q.text.split('___');
+    return '<div class="blank-row">'+
+      'Q'+(state.current+1)+'. '+parts[0]+
+      '<div class="blank-target '+(ans?'filled':'')+'" ondragover="event.preventDefault()" ondrop="'+(done?'':'dropOnBlank(event,'+q.id+')')+'" onclick="'+(done?'':'removeFromBlank('+q.id+')')+'">'+
+        (ans?ans:'Drop here...')+
+      '</div>'+
+      parts[1]+
+    '</div>'+
+    (!done?'<div class="chip-pool">'+
+      q.options.map(o=>(
+        '<div class="drop-chip '+(ans===o?'used':'')+'" draggable="'+(ans===o?'false':'true')+'" ondragstart="'+(ans===o?'':'dragStart(event,\''+o+'\')')+'" onclick="'+(ans===o?'':'selectBlankChip('+q.id+',\''+o+'\')')+'">'+
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 7h16M4 12h16M4 17h16"/></svg> '+o+
+        '</div>'
+      )).join('')+
+    '</div>':'');
+  }
+  if(q.type==='drag'){
+    const placed=state.dragState[q.id]||new Array(q.items.length).fill(null);
+    const usedOptions=placed.filter(Boolean);
+    return '<div class="drag-drop">'+
+      q.items.map((item,i)=>{
+        let tc='dd-target';
+        if(placed[i]){
+          if(done) tc+=placed[i]===q.correct[i]?' correct-item':' incorrect-item';
+          else tc+=' has-item';
+        }
+        return '<div class="dd-row">'+
+          '<div class="dd-label">'+item+' &rarr;</div>'+
+          '<div class="'+tc+'" ondrop="'+(done?'':'dropOn(event,'+q.id+','+i+')')+'" ondragover="'+(done?'':'event.preventDefault()')+'">'+
+            (placed[i]?
+              '<span>'+placed[i]+'</span>'+(done?(placed[i]===q.correct[i]?' ✅':' ❌'):'')+
+              (!done?'<button onclick="removeFromSlot('+q.id+','+i+')" style="margin-left:auto;background:none;border:none;cursor:pointer;color:#9CA3AF;font-size:16px;">&times;</button>':''):
+              '<span style="font-size:12px;color:#9CA3AF">Drop here...</span>')+
+          '</div>'+
+        '</div>';
+      }).join('')+
+      (!done?'<div class="dd-options">'+
+        q.options.map(o=>{
+          const used=usedOptions.includes(o);
+          return '<div class="dd-chip'+(used?' used':'')+'" draggable="'+(used?'false':'true')+'" data-opt="'+o+'" ondragstart="'+(used?'':'dragStart(event,\''+o+'\')')+'">'+
+            '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:6px;"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'+o+
+          '</div>';
+        }).join('')+
+      '</div>':
+      '<div style="margin-top:10px;background:#F0FDF4;border-radius:8px;padding:8px 12px;font-size:12px;color:#166534;font-weight:600;">'+
+        'Correct: '+q.items.map((item,i)=>item+' &rarr; '+q.correct[i]).join(' &nbsp;|&nbsp; ')+
+      '</div>')+
+    '</div>';
+  }
+  return '';
+}
+
+function selectBlankChip(qid, opt){
+  state.answers[qid]=opt;
+  render();
+}
+
+function dropOnBlank(e, qid){
+  e.preventDefault();
+  if(!dragVal)return;
+  state.answers[qid]=dragVal;
+  dragVal=null;
+  render();
+}
+
+function removeFromBlank(qid){
+  delete state.answers[qid];
+  render();
+}
+
+function renderFeedback(q){
+  const correct=isCorrect(q,state.answers[q.id]);
+  return '<div class="feedback '+(correct?'correct':'incorrect')+'">'+
+    (correct?'&#9989; Correct! ':'&#10060; Incorrect &mdash; ')+q.explanation+
+  '</div>';
+}
+
+function renderModal(answered,markedCount){
+  const pending=QUESTIONS.length-answered;
+  return '<div class="overlay" onclick="if(event.target===this)closeModal()">'+
+    '<div class="modal">'+
+      '<h2>Module Review Summary</h2>'+
+      '<p>Please check your progress before final submission.</p>'+
+      '<div class="summary-cards">'+
+        '<div class="sum-card pending"><div class="num">'+pending+'</div><div class="lbl">PENDING</div></div>'+
+        '<div class="sum-card review"><div class="num">'+markedCount+'</div><div class="lbl">FOR REVIEW</div></div>'+
+        '<div class="sum-card answered"><div class="num">'+answered+'</div><div class="lbl">ANSWERED</div></div>'+
+      '</div>'+
+      '<div class="modal-q-grid">'+
+        QUESTIONS.map((q,i)=>{
+          let cls='modal-q-btn';
+          if(hasAnswer(q)) cls+=' answered';
+          if(state.marked[q.id]) cls+=' review';
+          return '<button class="'+cls+'" onclick="goTo('+i+');closeModal()">'+(i+1)+'</button>';
+        }).join('')+
+      '</div>'+
+      '<div class="modal-btns">'+
+        '<button class="btn btn-secondary" onclick="closeModal()">Return to Quiz</button>'+
+        '<button class="btn btn-primary" onclick="submitQuiz()">Finalize &amp; Submit</button>'+
+      '</div>'+
+    '</div>'+
+  '</div>';
+}
+
+// Actions
+function goTo(i){state.current=i;render();}
+function goToReview(i){state.submitted=true;state.current=i;state.screen='quiz';render();}
+function toggleMark(id){state.marked[id]=!state.marked[id];render();}
+function showReviewModal(){state.showModal=true;render();}
+function closeModal(){state.showModal=false;render();}
+function prevQ(){if(state.current>0){state.current--;render();}}
+function nextQ(){
+  if(state.current<QUESTIONS.length-1){state.current++;render();}
+  else if(state.submitted){exitQuiz();}
+  else{state.showModal=true;render();}
+}
+function selectMcq(id,i){state.answers[id]=i;render();}
+function toggleMulti(id,i){
+  let arr=Array.isArray(state.answers[id])?[...state.answers[id]]:[];
+  const idx=arr.indexOf(i);
+  if(idx>=0)arr.splice(idx,1);else arr.push(i);
+  state.answers[id]=arr;render();
+}
+function selectYN(id,v){state.answers[id]=v;render();}
+function selectDD(id,v){if(v)state.answers[id]=v;render();}
+function submitQuiz(){
+  if(timerInterval)clearInterval(timerInterval);
+  state.submitted=true;state.showModal=false;
+  state.screen='report';render();
+}
+function exitQuiz(){
+  if(confirm('Exit the test? Your results will be lost.')){
+    state={screen:'quiz',current:0,answers:{},marked:{},dragState:{},showModal:false,seconds:3000,submitted:false};
+    if(timerInterval)clearInterval(timerInterval);
+    timerInterval=null;render();startTimer();
+  }
+}
+
+let dragVal=null;
+function dragStart(e,opt){dragVal=opt;}
+function dropOn(e,qid,slot){
+  e.preventDefault();
+  if(!dragVal)return;
+  const q=QUESTIONS.find(q=>q.id===qid);
+  if(!state.dragState[qid])state.dragState[qid]=new Array(q.items.length).fill(null);
+  const placed=state.dragState[qid];
+  const ex=placed.indexOf(dragVal);
+  if(ex>=0)placed[ex]=null;
+  placed[slot]=dragVal;
+  state.dragState[qid]=placed;
+  state.answers[qid]=[...placed];
+  dragVal=null;render();
+}
+function removeFromSlot(qid,slot){
+  if(!state.dragState[qid])return;
+  state.dragState[qid][slot]=null;
+  state.answers[qid]=[...state.dragState[qid]];
+  render();
+}
+function setupDrag(){
+  document.querySelectorAll('.dd-chip:not(.used)').forEach(el=>{
+    el.addEventListener('dragstart',e=>dragStart(e,el.dataset.opt));
+  });
+}
+
+render();
+// startTimer() removed from here, now in startExam()
+</script>
+</body>
+</html>
