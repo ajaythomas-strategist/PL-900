@@ -1058,6 +1058,41 @@ section {
   transform: translateX(2px);
 }
 
+/* Disabled card styles */
+.day-card.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: var(--neutral-card);
+  border-color: var(--neutral-border);
+}
+
+.day-card.disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--neutral-border);
+}
+
+.day-badge.day-disabled {
+  background-color: var(--text-light);
+}
+
+.coming-soon-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-learn.disabled {
+  color: var(--text-light);
+}
+
+.day-card.disabled:hover .btn-learn.disabled {
+  gap: 6px;
+  color: var(--text-light);
+}
+
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
