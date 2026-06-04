@@ -133,6 +133,17 @@ body {
   background-color: var(--primary-light);
 }
 
+.nav-link-cta {
+  background-color: var(--primary);
+  color: white !important;
+  border-radius: var(--radius-sm);
+}
+
+.nav-link-cta:hover {
+  background-color: var(--primary-hover) !important;
+  color: white !important;
+}
+
 /* ==========================================================================
    Main Content Area & Section Layouts
    ========================================================================== */
