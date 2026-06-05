@@ -193,6 +193,14 @@
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        // Clean up inline styling after transition to restore CSS-defined hover styles
+        setTimeout(() => {
+          if (entry.target) {
+            entry.target.style.opacity = '';
+            entry.target.style.transform = '';
+            entry.target.style.transition = '';
+          }
+        }, 400);
         animObserver.unobserve(entry.target);
       }
     });
@@ -203,7 +211,7 @@
   ).forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    el.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
     animObserver.observe(el);
   });
 
