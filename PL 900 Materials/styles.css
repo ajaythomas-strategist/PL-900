@@ -442,7 +442,7 @@ body {
   border-radius: var(--radius-lg);
   padding: 32px 40px;
   color: white;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg), 0 20px 50px rgba(15, 23, 42, 0.15);
@@ -615,7 +615,7 @@ body {
 .section-divider {
   border: none;
   border-top: 1px solid var(--neutral-border);
-  margin: 28px 0;
+  margin: 20px 0;
 }
 
 /* ==========================================================================
@@ -625,7 +625,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .feature-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
@@ -740,7 +740,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .platform-grid.two-col { grid-template-columns: repeat(2, 1fr); }
@@ -1599,22 +1599,34 @@ body::before {
 }
 
 [data-module-group]:not([data-module-group="1"]) .module-hero {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 /* ==========================================================================
    Global Spacing & Alignment Overrides
    ========================================================================== */
 .module-section > h3 {
-  margin: 20px 0 10px !important;
+  margin: 16px 0 8px !important;
 }
 
 .module-section > .section-subtitle {
-  margin-bottom: 16px !important;
+  margin-bottom: 10px !important;
 }
 
 .module-section .callout {
-  margin-top: 14px !important;
-  margin-bottom: 14px !important;
-  padding: 16px 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  padding: 14px 18px !important;
+}
+
+.numbered-list {
+  margin-bottom: 16px !important;
+}
+
+.takeaway-grid {
+  margin-bottom: 16px !important;
+}
+
+.relationship-diagram {
+  margin-bottom: 16px !important;
 }
